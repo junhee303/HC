@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -15,20 +16,26 @@ public class EmailActivity extends AppCompatActivity {
 
     private ImageView img_Number;
     private ImageView img_Email;
-    private EditText etUserEmail;
     private Button bFinish;
+    TextView input_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email);
 
-        img_Number = (ImageView) findViewById(R.id.img_Number);
         img_Email = (ImageView) findViewById(R.id.img_Email);
-        etUserEmail = (EditText) findViewById(R.id.etUserEmail);
+        input_email = (TextView) findViewById(R.id.input_email);
         bFinish = (Button) findViewById(R.id.bFinish);
 
+        Bundle extras = getIntent().getExtras();
+
+        String email = extras.getString("email");
+
+        input_email.setText(email);
+
         bFinish.setOnClickListener(new View.OnClickListener() {
+            // 대학교 메일을 통한 인증 완료시에만 인증완료 가능하게 하기!!☆☆
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
 

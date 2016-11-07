@@ -28,7 +28,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        img_Number = (ImageView) findViewById(R.id.img_Number);
         etPassword = (EditText) findViewById(R.id.etPassword);
         etPasswordConfirm = (EditText) findViewById(R.id.etPasswordConfirm);
         etNickname = (EditText) findViewById(R.id.etNickname);
@@ -62,6 +61,16 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
+
+        etNickname.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //'k2df456'라는 텍스트 값 넣어놨으나, 랜덤 닉네임 주어지게 바꿔야 함!!☆☆☆
+                etNickname.setText("");
+//              etNickname.requestFocus();
+                return;
+            }
+        });
+
 
         bMajorAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -103,6 +112,9 @@ public class RegisterActivity extends AppCompatActivity {
                     etNickname.requestFocus();
                     return;
                 }
+
+                //닉네임 중복 확인 ---> 서버 상의 데이터로 중복 확인 가능??☆☆☆☆☆☆☆☆☆☆☆☆
+                //if( etNickname.getText())
 
                 // 전공 입력 확인
                 if( etMajor.getText().toString().length() == 0 ) {
