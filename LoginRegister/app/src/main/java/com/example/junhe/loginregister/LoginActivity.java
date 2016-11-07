@@ -27,6 +27,9 @@ public class LoginActivity extends AppCompatActivity {
         bSendEmail.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), EmailActivity.class);
+                //여기서 입력한 메일주소를 다음 화면으로 전달해야함
+                String email = etEmail.getText().toString();
+                intent.putExtra("email",email);
                 startActivityForResult(intent, 1000);
             }
         });
